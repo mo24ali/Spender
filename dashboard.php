@@ -42,169 +42,170 @@
 
         <div class="grid grid-cols-3 grid-rows-3 gap-4 p-4">
 
-    <!-- TOTAL REVENUE -->
-    <div id="TotalRevenue">
-        <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs">
+            <!-- TOTAL REVENUE -->
+            <div id="TotalRevenue">
+                <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-xl shadow-xs">
 
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="text-2xl font-semibold tracking-tight text-heading">My Balances</h2>
-                <select name="revenueMonth"
-                    class="rounded-xl px-2 py-1 bg-white dark:bg-gray-900 border">
-                    <option disabled selected>Select month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-2xl font-semibold tracking-tight text-heading">My Balances</h2>
+                        <select name="revenueMonth"
+                            class="rounded-xl px-2 py-1 bg-white dark:bg-gray-900 border">
+                            <option disabled selected>Select month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+
+                    <p class="text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400">
+                        $
+                        <?php
+                        require "config/connexion.php";
+                        $query = "select SUM(price) as total from income";
+                        $request = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_assoc($request);
+                        echo $row['total'];
+                        ?>
+                    </p>
+
+                    <div class="flex items-center gap-3 text-sm text-body">
+                        <p class="text-green-600 dark:text-green-400 font-medium">
+                            <i class="fa-solid fa-money-bill-trend-up"></i> minichart
+                        </p>
+                        <p>compared with the last month</p>
+                    </div>
+                </div>
             </div>
 
-            <p class="text-3xl font-bold mb-4 text-blue-600 dark:text-blue-400">
-                $
-                <?php
-                require "config/connexion.php";
-                $query = "select SUM(price) as total from income";
-                $request = mysqli_query($conn, $query);
-                $row = mysqli_fetch_assoc($request);
-                echo $row['total'];
-                ?>
-            </p>
 
-            <div class="flex items-center gap-3 text-sm text-body">
-                <p class="text-green-600 dark:text-green-400 font-medium">
-                    <i class="fa-solid fa-money-bill-trend-up"></i> minichart
-                </p>
-                <p>compared with the last month</p>
+            <!-- EXPENSES -->
+            <div id="Expenses">
+                <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-xl shadow-xs">
+
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-2xl font-semibold tracking-tight text-heading">My Expenses</h2>
+                        <select name="expenseMonth"
+                            class="rounded-xl px-2 py-1 bg-white dark:bg-gray-900 border">
+                            <option disabled selected>Select month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+
+                    <p class="text-3xl font-bold mb-4 text-red-600 dark:text-red-400">
+                        $
+                        <?php
+                        require "config/connexion.php";
+                        $query = "select SUM(price) as total from expense";
+                        $request = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_assoc($request);
+                        echo $row['total'];
+                        ?>
+                    </p>
+
+                    <div class="flex items-center gap-3 text-sm text-body">
+                        <p class="text-red-500 dark:text-red-400 font-medium">
+                            <i class="fa-solid fa-money-bill-trend-up"></i> minichart
+                        </p>
+                        <p>compared with the last month</p>
+                    </div>
+
+                </div>
             </div>
+
+
+            <!-- INCOME -->
+            <div id="Income">
+                <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-xl shadow-xs">
+
+                    <div class="flex justify-between items-center mb-3">
+                        <h2 class="text-2xl font-semibold tracking-tight text-heading">My Incomes</h2>
+                        <select name="incomeMonth"
+                            class="rounded-xl px-2 py-1 bg-white dark:bg-gray-900 border">
+                            <option disabled selected>Select month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                    </div>
+
+                    <p class="text-3xl font-bold mb-4 text-green-600 dark:text-green-400">
+                        $
+                        <?php
+                        require "config/connexion.php";
+                        $query = "select SUM(price) as total from income";
+                        $request = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_assoc($request);
+                        echo $row['total'];
+                        ?>
+                    </p>
+
+                    <div class="flex items-center gap-3 text-sm text-body">
+                        <p class="text-green-500 dark:text-green-400 font-medium">
+                            <i class="fa-solid fa-money-bill-trend-up"></i> minichart
+                        </p>
+                        <p>compared with the last month</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- CHART -->
+            <div class="col-span-2 bg-neutral-primary-soft border border-default rounded-xl shadow-xs p-4 flex items-center justify-center">
+                <canvas id="chart" class="w-full h-64"></canvas>
+            </div>
+
+
+            <!-- ACTIVITIES -->
+            <div id="listOfActivities" class="bg-neutral-primary-soft border border-default rounded-xl shadow-xs p-4 row-span-2">
+                Activities
+            </div>
+
+            <!-- SAVINGS -->
+            <div id="sevingsDiv" class="col-span-2 bg-neutral-primary-soft border border-default rounded-xl shadow-xs p-4">
+                <div class="text-xl font-semibold mb-3">Savings</div>
+
+                <div id="savings" class="grid grid-cols-2 grid-rows-2 gap-3">
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-xl border border-default shadow-sm">sav1</div>
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-xl border border-default shadow-sm">sav2</div>
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-xl border border-default shadow-sm">sav3</div>
+                    <div class="p-4 bg-white dark:bg-gray-800 rounded-xl border border-default shadow-sm">sav4</div>
+                </div>
+            </div>
+
         </div>
-    </div>
 
-
-    <!-- EXPENSES -->
-    <div id="Expenses">
-        <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs">
-
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="text-2xl font-semibold tracking-tight text-heading">My Expenses</h2>
-                <select name="expenseMonth"
-                    class="rounded-xl px-2 py-1 bg-white dark:bg-gray-900 border">
-                    <option disabled selected>Select month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-            </div>
-
-            <p class="text-3xl font-bold mb-4 text-red-600 dark:text-red-400">
-                $
-                <?php
-                require "config/connexion.php";
-                $query = "select SUM(price) as total from expense";
-                $request = mysqli_query($conn, $query);
-                $row = mysqli_fetch_assoc($request);
-                echo $row['total'];
-                ?>
-            </p>
-
-            <div class="flex items-center gap-3 text-sm text-body">
-                <p class="text-red-500 dark:text-red-400 font-medium">
-                    <i class="fa-solid fa-money-bill-trend-up"></i> minichart
-                </p>
-                <p>compared with the last month</p>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- INCOME -->
-    <div id="Income">
-        <div class="bg-neutral-primary-soft w-full p-6 border border-default rounded-base shadow-xs">
-
-            <div class="flex justify-between items-center mb-3">
-                <h2 class="text-2xl font-semibold tracking-tight text-heading">My Incomes</h2>
-                <select name="incomeMonth"
-                    class="rounded-xl px-2 py-1 bg-white dark:bg-gray-900 border">
-                    <option disabled selected>Select month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-                </select>
-            </div>
-
-            <p class="text-3xl font-bold mb-4 text-green-600 dark:text-green-400">
-                $
-                <?php
-                require "config/connexion.php";
-                $query = "select SUM(price) as total from income";
-                $request = mysqli_query($conn, $query);
-                $row = mysqli_fetch_assoc($request);
-                echo $row['total'];
-                ?>
-            </p>
-
-            <div class="flex items-center gap-3 text-sm text-body">
-                <p class="text-green-500 dark:text-green-400 font-medium">
-                    <i class="fa-solid fa-money-bill-trend-up"></i> minichart
-                </p>
-                <p>compared with the last month</p>
-            </div>
-
-        </div>
-    </div>
-
-
-    <!-- CHART -->
-    <div class="col-span-2 bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 flex items-center justify-center">
-        <canvas id="chart" class="w-full h-64"></canvas>
-    </div>
-
-
-    <!-- ACTIVITIES -->
-    <div id="listOfActivities" class="bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4 row-span-2">
-        Activities
-    </div>
-
-    <!-- SAVINGS -->
-    <div id="sevingsDiv" class="col-span-2 bg-neutral-primary-soft border border-default rounded-base shadow-xs p-4">
-        <div class="text-xl font-semibold mb-3">Savings</div>
-
-        <div id="savings" class="grid grid-cols-2 grid-rows-2 gap-3">
-            <div class="p-4 bg-white dark:bg-gray-800 rounded-base border border-default shadow-sm">sav1</div>
-            <div class="p-4 bg-white dark:bg-gray-800 rounded-base border border-default shadow-sm">sav2</div>
-            <div class="p-4 bg-white dark:bg-gray-800 rounded-base border border-default shadow-sm">sav3</div>
-            <div class="p-4 bg-white dark:bg-gray-800 rounded-base border border-default shadow-sm">sav4</div>
-        </div>
-    </div>
-
-</div>
-
-    </main>
+    </ma
+    in>
 
     <!-- ADD EXPENSE MODAL -->
     <div id="addExpense" class="fixed inset-0 bg-black/40 backdrop-blur-md flex justify-center items-center z-50 hidden">
@@ -220,10 +221,43 @@
             <button type="submit" id="validateExpense" class="rounded bg-blue-500 hover:bg-blue-300 hover:text-white transform duration-300 py-2 px-1">Add expense</button>
         </form>
     </div>
-    <script src="js/auth.js"></script>
-    <script src="js/forms.js"></script>
-    <script src="js/validators.js"></script>
+
+
+    <?php
+    require "config/connexion.php";
+
+    $requestExpense = "SELECT price, dueDate, Month(dueDate) as month FROM expense";
+    $queryExpense = mysqli_query($conn, $requestExpense);
+    $requestIncome = "SELECT price, getIncomeDate , Month(getIncomeDate) as month FROM income";
+    $queryincome = mysqli_query($conn,$requestIncome);
+    $dataExpense = [];
+    $dataIncome = [];
+
+    while ($row = mysqli_fetch_assoc($queryExpense)) {
+        $dataExpense[] = [
+            "price" => (float)$row["price"],
+            "date"  => $row["dueDate"],
+            "month" => $row["month"]
+        ];
+    }
+
+
+    while($row = mysqli_fetch_assoc($queryincome)){
+        $dataIncome[] = [
+            "price" => (float)$row["price"],
+            "date" => $row["getIncomeDate"],
+            "month" => $row["month"]
+        ];
+    }
+    ?>
+    <script>
+        let exp = <?php echo json_encode($dataExpense) ?>;
+        let inc = <?php echo json_encode($dataIncome) ?>;
+    </script>
     <script src="js/chart.js"></script>
+    <script src="js/forms.js"></script>
+
+
 
 </body>
 

@@ -1,22 +1,65 @@
 const ctx = document.getElementById("chart");
+console.log(exp);
+console.log(inc);
+
+//date extractions
+let expDates = [];
+exp.forEach((el) => {
+  expDates.push(el["date"]);
+})
+console.log(expDates);
+
+let incDates = [];
+inc.forEach((el) => {
+  incDates.push(el["date"]);
+})
+
+console.log(incDates);
+
+
+
+//price data extration
+//incomes data
+
+let incDataPrices = [];
+
+inc.forEach((el) =>{
+  incDataPrices.push(el["price"]);
+})
+console.log(incDataPrices);
+
+let expDataPrices = [];
+
+exp.forEach((el) =>{
+  expDataPrices.push(el["price"]);
+})
+
+console.log(expDataPrices);
+
+
+//months Array
+let monthArr = [];
+inc.forEach((el) =>{
+  monthArr.push(el["month"]);
+})
 
 new Chart(ctx, {
     type: "bar",   
     data: {
-        labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016],
+        labels: monthArr,
         datasets: [
             {
-                label: "Income",
-                type: "bar",
-                data: [1.4, 2, 2.5, 1.5, 2.5, 2.8, 3.8, 4.6],
-                borderColor: "#008FFB",
-                backgroundColor: "#008FFB88",
-                yAxisID: "yIncome",
+              label: "Income",
+              type: "bar",
+              data: incDataPrices,
+              borderColor: "#008FFB",
+              backgroundColor: "#008FFB88",
+              yAxisID: "yIncome",
             },
             {
                 label: "Cashflow",
                 type: "bar",
-                data: [1.1, 3, 3.1, 4, 4.1, 4.9, 6.5, 8.5],
+                data: expDataPrices,
                 borderColor: "#00E396",
                 backgroundColor: "#00E39688",
                 yAxisID: "yCash",
@@ -24,7 +67,7 @@ new Chart(ctx, {
             {
                 label: "Revenue",
                 type: "line",
-                data: [20, 29, 37, 36, 44, 45, 50, 58],
+                data: expDataPrices,
                 borderColor: "#FEB019",
                 backgroundColor: "#FEB019",
                 fill: false,
@@ -44,7 +87,7 @@ new Chart(ctx, {
         plugins: {
             title: {
                 display: true,
-                text: "XYZ - Stock Analysis (2009 - 2016)",
+                text: "My economy",
                 align: "start",
                 padding: 20,
                 font: { size: 18 }

@@ -41,35 +41,14 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-6xl mx-auto mt-20 px-4">
         <div class="flex items-center justify-between mb-10">
-
+        <p class="text-gray-600 dark:text-gray-300 text-xl">The financial and <br>management accounting <br>for your wallet</p>
+        <p class="text-white">
             
 
-            <div class="flex space-x-4">
-                <select id="filterSelect" class="rounded-lg px-3 py-2 border dark:bg-gray-800 dark:text-white">
-                    <option value="opt1">Option 1</option>
-                    <option value="opt2">Option 2</option>
-                </select>
-
-                <select id="monthFilter" class="rounded-lg px-3 py-2 border dark:bg-gray-800 dark:text-white">
-                    <option disabled selected>Select month</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <option value="03">March</option>
-                    <option value="04">April</option>
-                    <option value="05">May</option>
-                    <option value="06">June</option>
-                    <option value="07">July</option>
-                    <option value="08">August</option>
-                    <option value="09">September</option>
-                    <option value="10">October</option>
-                    <option value="11">November</option>
-                    <option value="12">December</option>
-
-                </select>
-            </div>
+        
+        </p>
         </div>
 
-        <p class="text-gray-600 dark:text-gray-300 text-xl">No data available yet — start by adding new payments.</p>
     </main>
 
     <!-- LOGIN MODAL -->
