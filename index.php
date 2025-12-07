@@ -38,6 +38,8 @@
             max-width: 1200px;
         }
     </style>
+    <script src="js/landing.js" defer></script>
+    <script src="js/auth.js" defer></script>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900">
@@ -127,8 +129,7 @@
     <script>
 
     </script>
-    <script src="js/landing.js" defer></script>
-    <script src="js/auth.js" defer></script>
+    
 </body>
 
 </html>
