@@ -120,7 +120,7 @@
                         <?php
                         require "config/connexion.php";
                         $userId = $_SESSION['user_id'];
-                        $query = "select SUM(price) as total from income where user_id=$userId";
+                        $query = "select SUM(i.price)-SUM(e.price) as total from income i ,expense e where i.user_id =$userId AND e.user_id=$userId ";
                         $request = mysqli_query($conn, $query);
                         $row = mysqli_fetch_assoc($request);
                         echo $row['total'];
