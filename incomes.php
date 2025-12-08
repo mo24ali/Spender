@@ -9,7 +9,6 @@
 
     <script src="js/auth.js"></script>
     <script src="js/forms.js"></script>
-    <script src="js/validators.js"></script>
     <title>Incomes</title>
 </head>
 
@@ -128,11 +127,11 @@
             <input type="date" id="incomeDate" name="income_date" class="w-full p-2 rounded-lg border dark:bg-gray-900 dark:text-white" value="<?php echo $income['getIncomeDate'] ?? ''; ?>">
             <button type="submit" id="validateIncome" class="rounded bg-blue-500 hover:bg-blue-300 hover:text-white transform duration-300 py-2 px-1">
                 <?php
-                    if(isset($modalId)){
-                        echo "modify income";
-                    }else{
-                        echo "Add income";
-                    }
+                if (isset($modalId)) {
+                    echo "modify income";
+                } else {
+                    echo "Add income";
+                }
                 ?>
             </button>
         </form>
@@ -149,6 +148,58 @@
             ease: "power2.out"
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("addIncomeForm");
+
+            form.addEventListener("submit", function(e) {
+                const title = document.getElementById("incomeName").value.trim();
+                const desc = document.getElementById("incomeDescription").value.trim();
+                const price = document.getElementById("incomePrice").value.trim();
+                const date = document.getElementById("incomeDate").value;
+
+                // Remove previous errors
+                document.querySelectorAll(".error-text").forEach(el => el.remove());
+
+                let valid = true;
+
+                if (title === "") {
+                    showError("incomeName", "Income title is required");
+                    valid = false;
+                }
+
+                if (desc === "") {
+                    showError("incomeDescription", "Description is required");
+                    valid = false;
+                }
+
+                if (price === "" || isNaN(price) || Number(price) <= 0) {
+                    showError("incomePrice", "Enter a valid salary amount");
+                    valid = false;
+                }
+
+                if (date === "") {
+                    showError("incomeDate", "Please select a date");
+                    valid = false;
+                }
+
+                if (!valid) {
+                    e.preventDefault(); // stop form submit
+                }
+            });
+
+            function showError(inputId, message) {
+                const input = document.getElementById(inputId);
+                const error = document.createElement("div");
+
+                error.className = "error-text text-red-500 text-sm mt-1";
+                error.innerText = message;
+
+                input.parentNode.insertBefore(error, input.nextSibling);
+            }
+        });
+    </script>
+
 </body>
 
 

@@ -103,3 +103,13 @@ add state varchar(10);
 update expense
 set
     state = 'not payed';
+
+    SELECT * FROM income where user_id=$userId
+    SELECT * FROM income WHERE incomeId = $modalId
+     SELECT * FROM expense where user_id=$userId
+    SELECT * FROM expense WHERE expenseId = $modalId
+
+    select SUM(i.price)-SUM(e.price) as total from income i ,expense e where i.user_id =$userId AND e.user_id=$userId AND MONTH(i.getIncomeDate) = '$month' AND MONTH(e.dueDate) = '$month'
+    select SUM(price) as total from expense where user_id=$userId AND MONTH(dueDate) = '$month'
+    select SUM(price) as total from income where user_id=$userId AND MONTH(getIncomeDate) = '$month'
+    

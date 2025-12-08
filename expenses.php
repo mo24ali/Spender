@@ -18,22 +18,22 @@
 
     <!-- NAVBAR -->
     <header class="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-sm opacity-0 translate-y-[-50px]" id="navbar">
-    <nav class="max-w-7xl mx-auto flex items-center justify-between p-4">
-        <a href="index.php" class="text-2xl font-bold text-blue-600 dark:text-white">Spender</a>
-        <div class="hidden lg:flex space-x-10">
-            <a href="dashboard.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Dashboard</a>
-            <a href="transactions.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Transactions</a>
-            <a href="expenses.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Expenses</a>
-            <a href="incomes.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Incomes</a>
-            <a href="support.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Support</a>
-        </div>
-        <a href="auth/logout.php">
+        <nav class="max-w-7xl mx-auto flex items-center justify-between p-4">
+            <a href="index.php" class="text-2xl font-bold text-blue-600 dark:text-white">Spender</a>
+            <div class="hidden lg:flex space-x-10">
+                <a href="dashboard.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Dashboard</a>
+                <a href="transactions.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Transactions</a>
+                <a href="expenses.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Expenses</a>
+                <a href="incomes.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Incomes</a>
+                <a href="support.php" class="text-gray-700 dark:text-gray-200 hover:text-blue-600 transition">Support</a>
+            </div>
+            <a href="auth/logout.php">
                 <button id="" class="bg-blue-600 px-4 py-2 rounded-lg text-white hover:bg-blue-500 transition">
                     Logout
                 </button>
             </a>
-    </nav>
-</header>
+        </nav>
+    </header>
 
     <!-- MAIN CONTENT -->
     <main class="max-w-6xl mx-auto mt-20 px-4">
@@ -46,38 +46,38 @@
 
 
 
-      <table class="w-full text-sm text-left rtl:text-right text-body border border-default rounded-lg overflow-hidden">
-    <thead class="bg-neutral-secondary-soft border-b border-default">
-        <tr>
-            <th class="px-6 py-3 font-medium">Expense ID</th>
-            <th class="px-6 py-3 font-medium">Expense Title</th>
-            <th class="px-6 py-3 font-medium">Description</th>
-            <th class="px-6 py-3 font-medium">Price</th>
-            <th class="px-6 py-3 font-medium">Due Date</th>
-            <th class="px-6 py-3 font-medium">Actions</th>
-        </tr>
-    </thead>
+        <table class="w-full text-sm text-left rtl:text-right text-body border border-default rounded-lg overflow-hidden">
+            <thead class="bg-neutral-secondary-soft border-b border-default">
+                <tr>
+                    <th class="px-6 py-3 font-medium">Expense ID</th>
+                    <th class="px-6 py-3 font-medium">Expense Title</th>
+                    <th class="px-6 py-3 font-medium">Description</th>
+                    <th class="px-6 py-3 font-medium">Price</th>
+                    <th class="px-6 py-3 font-medium">Due Date</th>
+                    <th class="px-6 py-3 font-medium">Actions</th>
+                </tr>
+            </thead>
 
-    <tbody>
-        <?php
-        session_start();
-        require "config/connexion.php";
-        $userId = $_SESSION['user_id'];
-        $request = "SELECT * FROM expense where user_id=$userId";
-        $query = mysqli_query($conn, $request);
+            <tbody>
+                <?php
+                session_start();
+                require "config/connexion.php";
+                $userId = $_SESSION['user_id'];
+                $request = "SELECT * FROM expense where user_id=$userId";
+                $query = mysqli_query($conn, $request);
 
-        while ($row = mysqli_fetch_assoc($query)) {
-            $id = $row['expenseId'];
+                while ($row = mysqli_fetch_assoc($query)) {
+                    $id = $row['expenseId'];
 
-            echo "<tr class='odd:bg-neutral-primary-soft even:bg-neutral-secondary-soft border-b border-default hover:bg-neutral-secondary transition'>";
-            
-            echo "<td class='px-6 py-3'>" . htmlspecialchars($row['expenseId']) . "</td>";
-            echo "<td class='px-6 py-3'>" . htmlspecialchars($row['expenseTitle']) . "</td>";
-            echo "<td class='px-6 py-3'>" . htmlspecialchars($row['description']) . "</td>";
-            echo "<td class='px-6 py-3'>$" . htmlspecialchars($row['price']) . "</td>";
-            echo "<td class='px-6 py-3'>" . htmlspecialchars($row['dueDate']) . "</td>";
+                    echo "<tr class='odd:bg-neutral-primary-soft even:bg-neutral-secondary-soft border-b border-default hover:bg-neutral-secondary transition'>";
 
-            echo "
+                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['expenseId']) . "</td>";
+                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['expenseTitle']) . "</td>";
+                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['description']) . "</td>";
+                    echo "<td class='px-6 py-3'>$" . htmlspecialchars($row['price']) . "</td>";
+                    echo "<td class='px-6 py-3'>" . htmlspecialchars($row['dueDate']) . "</td>";
+
+                    echo "
                 <td class='px-6 py-3 flex gap-2'>
                     <a href='update_handlers/updateExpense.php?id={$id}' 
                        class='px-3 py-1 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition text-xs'>
@@ -90,11 +90,11 @@
                 </td>
             ";
 
-            echo "</tr>";
-        }
-        ?>
-    </tbody>
-</table>
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
 
 
 
@@ -113,13 +113,13 @@
 
         if (isset($_GET['id'])) {
             $modalId = $_GET['id'];
-            $query="SELECT * FROM expense WHERE expenseId = $modalId";
+            $query = "SELECT * FROM expense WHERE expenseId = $modalId";
             $request = mysqli_query($conn, $query);
             $expense = mysqli_fetch_assoc($request);
         }
         ?>
 
-        <form id="addExpenseForm" action="form_handlers/expensesHandler.php<?php echo "?id=".$modalId?>" method="post"
+        <form id="addExpenseForm" action="form_handlers/expensesHandler.php<?php echo "?id=" . $modalId ?>" method="post"
             class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg w-96 space-y-4">
 
             <label for="expenseName" class="text-white">Expense title</label>
@@ -151,7 +151,7 @@
 
     </div>
 
- <script>
+    <script>
         // GSAP Animations
 
         // Navbar slide-in
@@ -161,7 +161,52 @@
             opacity: 1,
             ease: "power2.out"
         });
-        </script>
+    </script>
+
+    <script>
+      let form = document.getElementById("addExpenseForm");
+      form.addEventListener("submit",()=>{
+        let title = document.getElementById("expenseName").value.trim();
+        let description = document.getElementById("expenseDescription").value.trim();
+        let price = document.getElementById("expensePrice").value.trim();
+        let date = document.getElementById("expenseDate").value.trim();
+        document.querySelectorAll(".error-text").forEach(el => el.remove());
+
+            let valid = true;
+
+            if (title === "") {
+                showError("incomeName", "Title is required");
+                valid = false;
+            }
+
+            if (description === "") {
+                showError("incomeDescription", "Description is required");
+                valid = false;
+            }
+
+            if (price === "" || isNaN(price) || Number(price) <= 0) {
+                showError("incomePrice", "Enter a valid amount");
+                valid = false;
+            }
+
+            if (date === "") {
+                showError("incomeDate", "Please select a date");
+                valid = false;
+            }
+
+            if (!valid) {
+                e.preventDefault();
+            }
+        function showError(id, msg) {
+            const el = document.getElementById(id);
+            const error = document.createElement("div");
+            error.className = "error-text text-red-500 text-sm mt-1";
+            error.innerText = msg;
+
+            el.parentNode.insertBefore(error, el.nextSibling);
+        }
+      })
+    </script>
 </body>
 
 
