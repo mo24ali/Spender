@@ -15,12 +15,12 @@ $id = $_GET['id'] ?? null;
 $userId = $_SESSION['user_id'];
 if (!empty($id)) {
 
-    $income->modifierIncome($id, $title, $desc, $price, $date);
+    $income->modifierIncome($id, $title, $description, $price, $date);
     header("Location: ../incomes.php");
     exit;
 } else {
 
-    $income->ajouterIncome($title, $desc, $price, $date,$userId);
+    $income->ajouterIncome($title, $description, $price, $date,$userId);
 
     header("Location: ../incomes.php");
     exit;

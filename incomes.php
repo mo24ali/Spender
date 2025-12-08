@@ -118,13 +118,23 @@
 
             <label for="incomeName" class="text-white">Income title</label>
             <input type="text" id="incomeName" name="income_title" class="w-full p-2 rounded-lg border dark:bg-gray-900 dark:text-white" value="<?php echo $income['incomeTitle'] ?? ''; ?>">
+
             <label for="incomeDescription" class="text-white"> Description : </label>
-            <input type="text" id="incomeDescription" name="income_description" class="w-full p-2 rounded-lg border dark:bg-gray-900 dark:text-white" value="<?php echo $income['decription'] ?? ''; ?>">
+            <input type="text" id="incomeDescription" name="income_description" class="w-full p-2 rounded-lg border dark:bg-gray-900 dark:text-white" value="<?php echo $income['description'] ?? ''; ?>">
+
             <label for="incomePrice" class="text-white"> Salary : </label>
             <input type="text" id="incomePrice" name="income_price" class="w-full p-2 rounded-lg border dark:bg-gray-900 dark:text-white" value="<?php echo $income['price'] ?? ''; ?>">
             <label for="incomeDate" class="text-white">Getting income date :</label>
             <input type="date" id="incomeDate" name="income_date" class="w-full p-2 rounded-lg border dark:bg-gray-900 dark:text-white" value="<?php echo $income['getIncomeDate'] ?? ''; ?>">
-            <button type="submit" id="validateIncome" class="rounded bg-blue-500 hover:bg-blue-300 hover:text-white transform duration-300 py-2 px-1">Add income</button>
+            <button type="submit" id="validateIncome" class="rounded bg-blue-500 hover:bg-blue-300 hover:text-white transform duration-300 py-2 px-1">
+                <?php
+                    if(isset($modalId)){
+                        echo "modify income";
+                    }else{
+                        echo "Add income";
+                    }
+                ?>
+            </button>
         </form>
     </div>
 

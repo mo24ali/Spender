@@ -9,7 +9,7 @@
 
 
         public function ajouterIncome($incomeTitle, $incomeDescription, $price, $getDate,$userId){
-            $request = "insert into income(incomeTitle,description,user_id,price,getIncomeDate) 
+            $request = "insert into income(incomeTitle , description , user_id , price , getIncomeDate) 
                         values ('$incomeTitle','$incomeDescription','$userId','$price','$getDate')";
             $query = mysqli_query($this->conn,$request);
             if(isset($query)){
