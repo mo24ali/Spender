@@ -1,4 +1,4 @@
-# 💸 Spender – Personal Finance Dashboard (PHP & MySQL)
+# 💸 Spender – Personal Finance Dashboard 
 
 Spender est une application simple et intuitive permettant aux utilisateurs de gérer leurs **revenus**, leurs **dépenses**, et d'obtenir une **vision claire de leur budget**.  
 Développée avec **PHP**, **MySQL**, **HTML/CSS** et un peu de **JavaScript**, cette application constitue un excellent projet pédagogique pour pratiquer les opérations **CRUD**, la gestion des formulaires, et l'organisation d'un mini tableau de bord financier.
